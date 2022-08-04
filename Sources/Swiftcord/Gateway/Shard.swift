@@ -13,7 +13,7 @@ import NIOPosix
 import NIOCore
 
 /// WS class
-class Shard: Gateway {
+public class Shard: Gateway {
 
     // MARK: Properties
     /// Gateway URL for gateway
@@ -308,7 +308,7 @@ class Shard: Gateway {
      - parameter text: JSON text to send through WS connection
      - parameter presence: Whether or not this WS payload updates shard presence
      */
-    func send(_ text: String, presence: Bool = false) {
+    public func send(_ text: String, presence: Bool = false) {
         let item = DispatchWorkItem { [unowned self] in
             self.session?.send(text)
         }
