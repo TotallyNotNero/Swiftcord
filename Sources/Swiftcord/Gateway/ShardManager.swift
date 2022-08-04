@@ -7,13 +7,13 @@
 //
 
 import NIOCore
-class ShardManager {
+public class ShardManager {
 
     /// The gateway url to connect to
     var gatewayUrl: String?
 
     /// Array of Shard class
-    var shards = [Shard]()
+    public var shards = [Shard]()
     
     var eventLoopGroup: EventLoopGroup?
 
