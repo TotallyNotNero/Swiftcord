@@ -6,7 +6,7 @@
 //  Copyright © 2017 Alejandro Alonso. All rights reserved.
 //
 /// Payload Type
-struct Payload {
+public struct Payload {
 
     // MARK: Properties
     /// OP Code for payload
