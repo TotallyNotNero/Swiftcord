@@ -352,3 +352,4 @@ public enum Event: String {
      Fired when a text input is used
      */
     case textInputEvent = "TEX
+}
