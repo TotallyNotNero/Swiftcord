@@ -6,7 +6,7 @@
 //  Copyright © 2017 Alejandro Alonso. All rights reserved.
 //
 /// Payload Type
-struct Payload {
+public struct Payload {
 
     // MARK: Properties
     /// OP Code for payload
@@ -39,7 +39,7 @@ struct Payload {
      - parameter op: OP code to dispatch
      - parameter data: Either an Array | Dictionary to dispatch under the payload.d
      */
-    init(op: OP, data: Any) {
+    public init(op: OP, data: Any) {
         self.op = op.rawValue
         self.d = data
         self.s = nil
@@ -48,7 +48,7 @@ struct Payload {
 
     // MARK: Functions
     /// Returns self as a String
-    func encode() -> String {
+    public func encode() -> String {
         var payload = ["op": self.op, "d": self.d]
 
         if self.t != nil {
