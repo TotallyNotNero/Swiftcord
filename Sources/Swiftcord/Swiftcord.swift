@@ -89,7 +89,7 @@ open class Swiftcord: Eventable {
     public internal(set) var shardCount = 1
 
     /// Shard Handler
-    lazy var shardManager = ShardManager(eventLoopGroup: self.eventLoopGroup)
+    public lazy var shardManager = ShardManager(eventLoopGroup: self.eventLoopGroup)
 
     /// How many shards are ready
     var shardsReady = 0
