@@ -5,7 +5,6 @@
 //  Created by Alejandro Alonso
 //  Copyright © 2017 Alejandro Alonso. All rights reserved.
 //
-
 /// Organize all dispatch events
 public enum OP: Int {
     case dispatch,
@@ -33,7 +32,6 @@ enum VoiceOP: Int {
          resume,
          hello,
          resumed,
-         clientConnect = 12,
          clientDisconnect = 13
 }
 
@@ -57,16 +55,6 @@ enum CloseOP: Int {
          invalidAPIVersion,
          invalidIntents,
          disallowedIntents
-}
-
-enum SpeakingState: Int {
-    case none
-    
-    case voice
-    
-    case soundShare
-    
-    case priority = 4
 }
 
 /// Organize all the different http methods
@@ -351,5 +339,170 @@ public enum Event: String {
     /**
      Fired when a text input is used
      */
-    case textInputEvent = "TEX
+    case textInputEvent = "TEXT_INPUT_INTERACTION"
+}
+
+/// Value for Intents
+public enum Intents: Int {
+    /// The `guilds` intent is required for us to cache channels locally. It is also needed for many events
+    // case guilds = 1
+    /// Events on member join, leave and updates. This is a Privileged Intent
+    case guildMembers = 2
+
+    /// Ban events
+    case guildBans = 4
+
+    /// Emote and Stickers create, update and delete events
+    case guildEmojisAndStickers = 8
+
+    /// Events on creating, editing or deleting integrations.
+    case guildIntegrations = 16
+
+    /// Webhook events
+    case guildWebhooks = 32
+
+    /// Events on the creation or deletion of invites
+    case guildInvites = 64
+
+    /// Voice State events. Required to determine which members are in a voice channel
+    case guildVoiceStates = 128
+
+    /// Presence events. This is an extremely heavy intent! If you are trying to get information on members, use the `guildMembers` intent instead. This is a privileged Intent
+    case guildPresences = 256
+
+    /// Events on when a message in a guild is created, updated or deleted. This will become a privileged intent in 2022
+    case guildMessages = 512
+
+    /// Events on when a reaction is added to a message in a guild
+    case guildMessageReactions = 1024
+
+    /// Typing event of a member in a guild
+    case guildMessageTyping = 2048
+
+    // TODO: Figure this out
+    case directMessages = 4096
+
+    /// Events on when a reaction is added to a message in a DM
+    case directMessagesReactions = 8192
+
+    /// Typing event of a user in a DM
+    case directMessagesTyping = 16384
+
+    /// Events on when an event is created, edited or deleted in a guild
+    case guildScheduledEvents = 65536
+}
+
+/// Value type for statuses
+public enum Status: String {
+
+    /// Do not disturb status
+    case dnd = "dnd"
+
+    /// Away status
+    case idle = "idle"
+
+    /// Invisible/Offline status
+    case offline = "offline"
+
+    /// Online status
+    case online = "online"
+
+    // Shown as offline but really isn't
+    case invisible = "invisible"
+}
+
+public enum ResponseError: Error {
+    case invalidURL
+    case nonSuccessfulRequest(RequestError)
+    case other(RequestError)
+    case unknownResponse
+}
+
+/// Permission enum to prevent wrong permission checks
+public enum Permission: Int {
+
+    /// Allows creation of instant invites
+    case createInstantInvite = 0x1
+
+    /// Allows kicking members
+    case kickMembers = 0x2
+
+    /// Allows banning members
+    case banMembers = 0x4
+
+    /// Allows all permissions and bypasses channel permission overwrites
+    case administrator = 0x8
+
+    /// Allows management and editing of channels
+    case manageChannels = 0x10
+
+    /// Allows management and editing of the guild
+    case manageGuild = 0x20
+
+    /// Allows for the addition of reactions to messages
+    case addReactions = 0x40
+
+    /// Allows for the user to view a server's audit log
+    case viewAuditLog = 0x80
+
+    /// Allows viewing of a channel. The channel will not appear for users without this permission
+    case viewChannel = 0x400
+
+    /// Allows for sending messages in a channel.
+    case sendMessages = 0x800
+
+    /// Allows for sending of /tts messages
+    case sendTTSMessages = 0x1000
+
+    /// Allows for deletion of other users messages
+    case manageMessages = 0x2000
+
+    /// Links sent by this user will be auto-embedded
+    case embedLinks = 0x4000
+
+    /// Allows for uploading images and files
+    case attachFiles = 0x8000
+
+    /// Allows for reading of message history
+    case readMessageHistory = 0x10000
+
+    /// Allows for using the @everyone tag to notify all users in a channel, and the @here tag to notify all online users in a channel
+    case mentionEveryone = 0x20000
+
+    /// Allows the usage of custom emojis from other servers
+    case useExternalEmojis = 0x40000
+
+    /// Allows for joining of a voice channel
+    case connect = 0x100000
+
+    /// Allows for speaking in a voice channel
+    case speak = 0x200000
+
+    /// Allows for muting members in a voice channel
+    case muteMembers = 0x400000
+
+    /// Allows for deafening of members in a voice channel
+    case deafenMembers = 0x800000
+
+    /// llows for moving of members between voice channels
+    case moveMembers = 0x1000000
+
+    /// Allows for using voice-activity-detection in a voice channel
+    case useVad = 0x2000000
+
+    /// Allows for modification of own nickname
+    case changeNickname = 0x4000000
+
+    /// Allows for modification of other users nicknames
+    case manageNicknames = 0x8000000
+
+    /// Allows management and editing of roles
+    case manageRoles = 0x10000000
+
+    /// Allows management and editing of webhooks
+    case manageWebhooks = 0x20000000
+
+    /// Allows management and editing of emojis
+    case manageEmojis = 0x40000000
+
 }
