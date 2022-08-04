@@ -5,8 +5,9 @@
 //  Created by Alejandro Alonso
 //  Copyright © 2017 Alejandro Alonso. All rights reserved.
 //
+
 /// Organize all dispatch events
-public enum OP: Int {
+enum OP: Int {
     case dispatch,
          heartbeat,
          identify,
@@ -32,6 +33,7 @@ enum VoiceOP: Int {
          resume,
          hello,
          resumed,
+         clientConnect = 12,
          clientDisconnect = 13
 }
 
@@ -55,6 +57,16 @@ enum CloseOP: Int {
          invalidAPIVersion,
          invalidIntents,
          disallowedIntents
+}
+
+enum SpeakingState: Int {
+    case none
+    
+    case voice
+    
+    case soundShare
+    
+    case priority = 4
 }
 
 /// Organize all the different http methods
@@ -346,6 +358,7 @@ public enum Event: String {
 public enum Intents: Int {
     /// The `guilds` intent is required for us to cache channels locally. It is also needed for many events
     // case guilds = 1
+
     /// Events on member join, leave and updates. This is a Privileged Intent
     case guildMembers = 2
 
@@ -411,11 +424,25 @@ public enum Status: String {
     case invisible = "invisible"
 }
 
-public enum ResponseError: Error {
+enum ResponseError: Error {
+    
+    /// An invalid URL was passed.
     case invalidURL
+    
+    /// A request returned a code <= 400.
     case nonSuccessfulRequest(RequestError)
+    
+    /// An error that does not fit in with our generic errors.
     case other(RequestError)
+    
+    /// A response we cannot handle was sent back
     case unknownResponse
+}
+
+enum VoiceError: Error {
+    
+    /// No suitable networking interface was found.
+    case noNetworkingInterfaceFound
 }
 
 /// Permission enum to prevent wrong permission checks
