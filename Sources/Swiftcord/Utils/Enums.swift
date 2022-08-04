@@ -7,7 +7,7 @@
 //
 
 /// Organize all dispatch events
-enum OP: Int {
+public enum OP: Int {
     case dispatch,
          heartbeat,
          identify,
