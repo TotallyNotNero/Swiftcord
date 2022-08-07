@@ -459,8 +459,8 @@ extension Shard {
                 }
 
             case .voiceServerUpdate:
-                print(data)
-                await self.swiftcord.shardManager.onVoiceServerUpdate(swiftcord, data)
+                let server = VoiceServer.init(data)
+                print(server.endpoint)
             case .audioData:
                 return
             case .connectionClose:
