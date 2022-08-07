@@ -459,7 +459,9 @@ extension Shard {
                 }
 
             case .voiceServerUpdate:
+                let vServer = VoiceServer(data);
                 self.swiftcord.ws.voiceServerData = data
+                await listener.onVoiceServer(event: VoiceServer)
             case .audioData:
                 return
             case .connectionClose:
