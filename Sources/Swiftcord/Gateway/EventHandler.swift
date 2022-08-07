@@ -460,6 +460,7 @@ extension Shard {
 
             case .voiceServerUpdate:
                 print(data)
+                await self.swiftcord.shardManager.onVoiceServerUpdate(swiftcord, data)
             case .audioData:
                 return
             case .connectionClose:
