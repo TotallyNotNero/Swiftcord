@@ -83,4 +83,14 @@ public class ShardManager {
         self.shards.append(shard)
     }
 
+open func onVoiceServerUpdate(_ swiftcord: Swiftcord, _ payload: [String : Any]) async {
+        var sessionId = ""
+        var shard: Shard!
+        
+        for guildShard in swiftcord.shardManager.shards where shard.id == swiftcord.getShard(for: Snowflake(payload["guild_id"])!) {
+            shard = guildShard
+            sessionId = guildShard.sessionId!
+        }
+    }
+
 }
