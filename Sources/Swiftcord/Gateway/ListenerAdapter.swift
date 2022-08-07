@@ -75,6 +75,7 @@ open class ListenerAdapter {
     open func onReady(botUser: User) async {}
     open func onTypingStart(channel: Channel, userId: Snowflake, time: Date) async {}
     open func onUserUpdate(event: User) async {}
+    open func onVoiceServer(event: VoiceServer) async {}
 
     public init() {}
 }
