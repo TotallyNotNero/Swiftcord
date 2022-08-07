@@ -458,7 +458,7 @@ extension Shard {
                 }
 
             case .voiceServerUpdate:
-                return
+                print(data)
             case .audioData:
                 return
             case .connectionClose:
