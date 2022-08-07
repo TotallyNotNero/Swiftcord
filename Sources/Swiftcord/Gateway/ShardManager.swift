@@ -91,6 +91,8 @@ open func onVoiceServerUpdate(_ swiftcord: Swiftcord, _ payload: [String : Any])
             shard = guildShard
             sessionId = guildShard.sessionId!
         }
+
+        print(payload)
     }
 
 }
