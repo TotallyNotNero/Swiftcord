@@ -63,6 +63,8 @@ open class Swiftcord {
     /// Event listeners
     public var listeners = [Event: [(Any) -> Void]]()
 
+    public var ws = DiscordWebsocket()
+
     var logger = Logger(label: "io.github.SketchMaster2001.Swiftcord")
 
     /// Optional options to apply to bot
