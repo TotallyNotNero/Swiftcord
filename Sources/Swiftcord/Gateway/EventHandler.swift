@@ -436,7 +436,7 @@ extension Shard {
 
             /// VOICE_STATE_UPDATE
             case .voiceStateUpdate:
-                print(data)
+                self.swiftcord.ws.voiceStateData = data
                 let guildId = Snowflake(data["guild_id"])!
                 guard let guild = self.swiftcord.guilds[guildId] else {
                     return
@@ -459,8 +459,7 @@ extension Shard {
                 }
 
             case .voiceServerUpdate:
-                let server = VoiceServer.init(data)
-                print(server.endpoint)
+                self.swiftcord.ws.voiceServerData = data
             case .audioData:
                 return
             case .connectionClose:
